@@ -1,19 +1,22 @@
+from Commonstruct.Point3D import POINT3D
+
+
 class Line:
-    def __init__(self, ori, direction):
-        self._ori = ori
+    def __init__(self, origin=POINT3D(), direction=POINT3D(1, 0, 0)):
+        self._origin = origin
         self._direction = direction
 
     @property
-    def ori(self):
-        return self._ori
+    def origin(self):
+        return self._origin
 
     @property
     def direction(self):
         return self._direction
 
-    @ori.setter
-    def ori(self, ori):
-        self._ori = ori
+    @origin.setter
+    def origin(self, origin):
+        self._origin = origin
 
     @direction.setter
     def direction(self, direction):

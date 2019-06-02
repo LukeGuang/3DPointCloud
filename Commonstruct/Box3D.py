@@ -6,7 +6,7 @@ from Commonstruct.Point3D import POINT3D
 
 class Box3D:
 
-    def __init__(self, maxPoint, minPoint):
+    def __init__(self, maxPoint=POINT3D(1, 1, 1), minPoint=POINT3D(-1, -1, -1)):
         """
 
         Box初始化，两个点构造一个与世界坐标系平行的Box
