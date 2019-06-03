@@ -36,7 +36,7 @@ class Focal_1200:
         self.max_slope = 20
         self.location = Point3D()  # 传感器的安装位置
         self.mounting_method = array([[0, 1, 0], [-1, 0, 0], [0, 0, 1]])  # 传感器的安装方式(传感器坐标系与世界坐标系一致)
-        self.Fix_Posture = Point3D()
+        self.Fix_Posture = Point3D()  # 传感器的安装姿态
 
     def Fix(self, Fix_Location, mounting_method, Fix_Posture):
         self.location = Fix_Location
@@ -45,13 +45,17 @@ class Focal_1200:
 
     def Trigger(self):
         """
-        触发函数
+        触发函数,需要考虑的地方有安装的位置，安装的方式，安装的姿态
 
         :return:
         """
+        # 传感器的初始激光
         List_Laser = []
         for i in range(self.pixel_num_x):
-            origin = Point3D()
-            origin.x = i * self.pixel_num_x
-            origin.y = 0
-            origin.z = self.location.z
+            origin = Point3D(i * self.pixel_num_x)
+            direction = Point3D(0, 0, -1)
+            Laser = Line3D(origin, direction)
+            List_Laser.append(Laser)
+        # 加入安装方式与安装位置
+        for laser in List_Laser:
+            pass

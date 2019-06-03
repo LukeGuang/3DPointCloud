@@ -2,10 +2,10 @@
 三维空间点
 """
 import math
-from Commonstruct import Point2D
+import numpy
 
 
-class Point3D:
+class Vector3D:
     __slots__ = ('_x', '_y', '_z')
 
     def __init__(self, x=0.0, y=0.0, z=0.0):
@@ -21,35 +21,41 @@ class Point3D:
         self._z = z
 
     def __add__(self, other):
-        if isinstance(other, Point3D):
-            return Point3D(self._x + other.x, self._y + other.y, self._z + other.z)
+        if isinstance(other, Vector3D):
+            return Vector3D(self._x + other.x, self._y + other.y, self._z + other.z)
         elif isinstance(other, int):
-            return Point3D(self._x + other, self._y + other, self._z + other)
+            return Vector3D(self._x + other, self._y + other, self._z + other)
         else:
             return None
 
     def __sub__(self, other):
-        if isinstance(other, Point3D):
-            return Point3D(self._x - other.x, self._y - other.y, self._z - other.z)
+        if isinstance(other, Vector3D):
+            return Vector3D(self._x - other.x, self._y - other.y, self._z - other.z)
         elif isinstance(other, int):
-            return Point3D(self._x - other, self._y - other, self._z - other)
+            return Vector3D(self._x - other, self._y - other, self._z - other)
         else:
             return None
 
     def __truediv__(self, other):
         if isinstance(other, int) and other != 0:
-            return Point3D(self._x / other, self._y / other, self._z / other)
+            return Vector3D(self._x / other, self._y / other, self._z / other)
         else:
             return None
 
     def __mul__(self, other):
         if isinstance(other, int):
-            return Point3D(self._x * other, self._y * other, self._z * other)
+            return Vector3D(self._x * other, self._y * other, self._z * other)
+        elif isinstance(other, numpy.ndarray) and other.shape == (3, 3):
+            tempVector = numpy.array(self.toList())
+            print(tempVector)
+            print(other)
+            # 这里有点问题
+            return numpy.dot(tempVector, other)
         else:
             return None
 
     def __eq__(self, other):
-        return isinstance(other, Point3D) and self._x == other.x and self._y == other.y and self._z == other.z
+        return isinstance(other, Vector3D) and self._x == other.x and self._y == other.y and self._z == other.z
 
     def toList(self):
         return [self._x, self._y, self._z]
@@ -79,14 +85,14 @@ class Point3D:
         self._z = z
 
     @staticmethod
-    def norm(pt):
+    def norm(vector):
         """
-        计算点pt到原点的距离
+        计算向量的模
 
-        :param pt: 输入的点
-        :return: 点到原点的距离
+        :param vector: 输入的向量
+        :return: 向量的模
         """
-        return math.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+        return math.sqrt(vector.x * vector.x + vector.y * vector.y + vector.z * vector.z)
 
     @staticmethod
     def toPoint(other):
@@ -97,16 +103,15 @@ class Point3D:
         :return: Point3D类型的实例
         """
         if len(other) == 3:
-            return Point3D(other[0], other[1], other[2])
+            return Vector3D(other[0], other[1], other[2])
         else:
             return None
-
-    def toPoint2D(self):
-        return Point2D(self.x, self.y)
 
     def __str__(self):
         return '[%.4f, %.4f, %.4f]' % (self._x, self._y, self._z)
 
 
 if __name__ == "__main__":
-    pass
+    v = Vector3D(1, 0, 0)
+    m = numpy.array([[0, 1, 0], [-1, 0, 0], [0, 0, 1]])
+    print(v * m)
