@@ -21,13 +21,25 @@ class Triangle:
     def vertex1(self):
         return self._vertex1
 
+    @vertex1.setter
+    def vertex1(self, vertex1):
+        self._vertex1 = vertex1
+
     @property
     def vertex2(self):
         return self._vertex2
 
+    @vertex2.setter
+    def vertex2(self, vertex2):
+        self._vertex2 = vertex2
+
     @property
     def vertex3(self):
         return self._vertex3
+
+    @vertex3.setter
+    def vertex3(self, vertex3):
+        self._vertex3 = vertex3
 
     # 需要修改
     def __str__(self):
