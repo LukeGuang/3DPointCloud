@@ -41,7 +41,3 @@ class Triangle:
     def vertex3(self, vertex3):
         self._vertex3 = vertex3
 
-    # 需要修改
-    def __str__(self):
-        strTriangle = [self._vertex1, self._vertex2, self._vertex3]
-        return str(strTriangle)

@@ -6,9 +6,8 @@ from Commonstruct import *
 
 
 def main():
-    STL_Path = r"E:\下载\testMesh.txt"
+    STL_Path = r"E:\项目\项目文件\3D玻璃50066\伯恩\模型\伯恩#P30.stl"
     stl_1 = STLModel.ReadSTL(STL_Path)  # type STLModel
-    print(stl_1.ListTri[1].vertex)  # 需要修改
 
 
 if __name__ == "__main__":
