@@ -4,7 +4,7 @@
 import math
 
 
-class POINT2D:
+class Point2D:
     __slots__ = ('_x', '_y')
 
     def __init__(self, x=0.0, y=0.0):
@@ -18,35 +18,35 @@ class POINT2D:
         self._y = y
 
     def __add__(self, other):
-        if isinstance(other, POINT2D):
-            return POINT2D(self._x + other.x, self._y + other.y)
+        if isinstance(other, Point2D):
+            return Point2D(self._x + other.x, self._y + other.y)
         elif isinstance(other, int):
-            return POINT2D(self._x + other, self._y + other)
+            return Point2D(self._x + other, self._y + other)
         else:
             return None
 
     def __sub__(self, other):
-        if isinstance(other, POINT2D):
-            return POINT2D(self._x - other.x, self._y - other.y)
+        if isinstance(other, Point2D):
+            return Point2D(self._x - other.x, self._y - other.y)
         elif isinstance(other, int):
-            return POINT2D(self._x - other, self._y - other)
+            return Point2D(self._x - other, self._y - other)
         else:
             return None
 
     def __truediv__(self, other):
         if isinstance(other, int) and other != 0:
-            return POINT2D(self._x / other, self._y / other)
+            return Point2D(self._x / other, self._y / other)
         else:
             return None
 
     def __mul__(self, other):
         if isinstance(other, int):
-            return POINT2D(self._x * other, self._y * other)
+            return Point2D(self._x * other, self._y * other)
         else:
             return None
 
     def __eq__(self, other):
-        return isinstance(other, POINT2D) and self._x == other.x and self._y == other.y
+        return isinstance(other, Point2D) and self._x == other.x and self._y == other.y
 
     @property
     def x(self):
@@ -83,7 +83,7 @@ class POINT2D:
         :return: Point3D类型的实例
         """
         if len(other) == 2:
-            return POINT2D(other[1], other[2])
+            return Point2D(other[1], other[2])
         else:
             return None
 

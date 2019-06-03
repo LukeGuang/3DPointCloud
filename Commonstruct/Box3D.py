@@ -1,19 +1,19 @@
 """
 Box结构体
 """
-from Commonstruct.Point3D import POINT3D
+from Commonstruct import Point3D
 
 
 class Box3D:
 
-    def __init__(self, maxPoint=POINT3D(1, 1, 1), minPoint=POINT3D(-1, -1, -1)):
+    def __init__(self, maxPoint=Point3D(1, 1, 1), minPoint=Point3D(-1, -1, -1)):
         """
 
         Box初始化，两个点构造一个与世界坐标系平行的Box
         :param maxPoint:
         :param minPoint:
         """
-        if isinstance(maxPoint, POINT3D) and isinstance(minPoint, POINT3D):
+        if isinstance(maxPoint, Point3D) and isinstance(minPoint, Point3D):
             self._max = maxPoint
             self._min = minPoint
         else:
@@ -27,7 +27,7 @@ class Box3D:
         :param pt: 平移向量
         :return:
         """
-        if isinstance(pt, POINT3D):
+        if isinstance(pt, Point3D):
             self._max += pt
             self._min += pt
 

@@ -1,8 +1,8 @@
-from Commonstruct.Point3D import POINT3D
+from Commonstruct import Point3D
 
 
-class Line:
-    def __init__(self, origin=POINT3D(), direction=POINT3D(1, 0, 0)):
+class Line3D:
+    def __init__(self, origin=Point3D(), direction=Point3D(1, 0, 0)):
         self._origin = origin
         self._direction = direction
 

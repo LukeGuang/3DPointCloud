@@ -1,0 +1,35 @@
+"""
+三角形
+"""
+
+
+class Triangle:
+    def __init__(self, vertex1=None, vertex2=None, vertex3=None):
+        self._vertex1 = vertex1
+        self._vertex2 = vertex2
+        self._vertex3 = vertex3
+
+    @staticmethod
+    def toTriangle(pointList):
+        if len(pointList) == 3:
+            pt1, pt2, pt3 = pointList
+            return Triangle(pt1, pt2, pt3)
+        else:
+            return None
+
+    @property
+    def vertex1(self):
+        return self._vertex1
+
+    @property
+    def vertex2(self):
+        return self._vertex2
+
+    @property
+    def vertex3(self):
+        return self._vertex3
+
+    # 需要修改
+    def __str__(self):
+        strTriangle = [self._vertex1, self._vertex2, self._vertex3]
+        return str(strTriangle)

@@ -2,10 +2,10 @@
 三维空间点
 """
 import math
-from Commonstruct.Point2D import POINT2D
+from Commonstruct import Point2D
 
 
-class POINT3D:
+class Point3D:
     __slots__ = ('_x', '_y', '_z')
 
     def __init__(self, x=0.0, y=0.0, z=0.0):
@@ -21,35 +21,35 @@ class POINT3D:
         self._z = z
 
     def __add__(self, other):
-        if isinstance(other, POINT3D):
-            return POINT3D(self._x + other.x, self._y + other.y, self._z + other.z)
+        if isinstance(other, Point3D):
+            return Point3D(self._x + other.x, self._y + other.y, self._z + other.z)
         elif isinstance(other, int):
-            return POINT3D(self._x + other, self._y + other, self._z + other)
+            return Point3D(self._x + other, self._y + other, self._z + other)
         else:
             return None
 
     def __sub__(self, other):
-        if isinstance(other, POINT3D):
-            return POINT3D(self._x - other.x, self._y - other.y, self._z - other.z)
+        if isinstance(other, Point3D):
+            return Point3D(self._x - other.x, self._y - other.y, self._z - other.z)
         elif isinstance(other, int):
-            return POINT3D(self._x - other, self._y - other, self._z - other)
+            return Point3D(self._x - other, self._y - other, self._z - other)
         else:
             return None
 
     def __truediv__(self, other):
         if isinstance(other, int) and other != 0:
-            return POINT3D(self._x / other, self._y / other, self._z / other)
+            return Point3D(self._x / other, self._y / other, self._z / other)
         else:
             return None
 
     def __mul__(self, other):
         if isinstance(other, int):
-            return POINT3D(self._x * other, self._y * other, self._z * other)
+            return Point3D(self._x * other, self._y * other, self._z * other)
         else:
             return None
 
     def __eq__(self, other):
-        return isinstance(other, POINT3D) and self._x == other.x and self._y == other.y and self._z == other.z
+        return isinstance(other, Point3D) and self._x == other.x and self._y == other.y and self._z == other.z
 
     @property
     def x(self):
@@ -94,12 +94,12 @@ class POINT3D:
         :return: Point3D类型的实例
         """
         if len(other) == 3:
-            return POINT3D(other[1], other[2], other[3])
+            return Point3D(other[0], other[1], other[2])
         else:
             return None
 
     def toPoint2D(self):
-        return POINT2D(self.x, self.y)
+        return Point2D(self.x, self.y)
 
     def __str__(self):
         return '[%.4f, %.4f, %.4f]' % (self._x, self._y, self._z)
